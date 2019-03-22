@@ -1,0 +1,27 @@
+<div class="data-table">
+    <table class="data-inner-table" *ngIf="data.length > 0">
+        <caption class="data-table-caption">
+          {{title}}
+        </caption>
+        <thead>
+          <th *ngFor='let header of headers'
+              key="header.accessor"
+              data-col="header.accessor">
+              <span class="header-cell">
+                  {{header.title}}
+              </span>
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor='let row of data'>
+            <ng-container *ngFor="let i = index; let cell of getObjectKeys(row);">
+                <td >
+                    {{row[cell]}}
+                </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="data.length === 0"> No data available</div>
+</div>
+
